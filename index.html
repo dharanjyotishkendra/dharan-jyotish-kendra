@@ -381,6 +381,104 @@
   }
   @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
   @media(max-width:640px){.float-wa{display:none;}}
+  .footer {
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 16px 12px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.footer-brand,
+.footer-phone {
+    display: inline-block;
+    animation: heartbeat 1.4s infinite;
+    transform-origin: center;
+}
+
+.footer-brand {
+    font-weight: 900;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.code {
+    color: #000;
+    font-weight: 900;
+}
+
+.play {
+    color: #0A3D91;
+    font-weight: 900;
+    margin-left: -1px; /* removes tiny visual gap */
+}
+
+.itsolution {
+    font-weight: 900;
+    background: linear-gradient(90deg,#0F9D58,#34C759,#00C853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.pvt {
+    color: #666;
+    font-weight: 700;
+}
+
+.footer-phone {
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 900;
+    background: linear-gradient(90deg,#0F9D58,#34C759,#00C853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: transform .3s ease;
+}
+
+.footer-phone:hover,
+.footer-brand:hover {
+    transform: scale(1.08);
+}
+
+@keyframes heartbeat {
+    0%   { transform: scale(1); }
+    15%  { transform: scale(1.10); }
+    30%  { transform: scale(1); }
+    45%  { transform: scale(1.10); }
+    60%  { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width:768px){
+    .footer{
+        font-size:14px;
+        padding:14px 10px;
+    }
+
+    .footer-brand{
+        display:block;
+        font-size:16px;
+        margin:8px 0;
+        white-space:normal;
+    }
+
+    .footer-phone{
+        display:inline-block;
+        font-size:16px;
+        margin-top:6px;
+    }
+
+    .separator{
+        display:none;
+    }
+}
 </style>
 </head>
 <body>
@@ -417,8 +515,8 @@
       <a href="#contact">सम्पर्क</a>
     </nav>
     <div class="nav-ctas">
-      <a class="nav-wa" href="https://wa.me/977-9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
-      <a class="nav-call" href="tel:+977-9765478998">📞 ९७६५४७८९९८</a>
+      <a class="nav-wa" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="nav-call" href="tel:9765478998">📞 ९७६५४७८९९८</a>
     </div>
   </div>
 </header>
@@ -431,8 +529,8 @@
       <h1>तपाईंको जीवनको <em>ग्रह-नक्षत्र</em> बुझ्ने, धरानको भरपर्दो ज्योतिष केन्द्र</h1>
       <p class="lede">कुण्डली विश्लेषण, नवग्रह पूजा, ग्रहशान्ति, वैवाहिक मिलान, षोडश संस्कार, वास्तु परामर्श, र सम्पूर्ण हिन्दू कर्मकाण्ड — पण्डित शालिग्राम गुरुद्वारा श्रद्धा र अनुभवमा आधारित सेवा।</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://wa.me/9779765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp मा सम्पर्क गर्नुहोस्</a>
-        <a class="btn btn-solid-gold" href="tel:+977-9765478998">📞 अहिले नै कल गर्नुहोस्</a>
+        <a class="btn btn-primary" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp मा सम्पर्क गर्नुहोस्</a>
+        <a class="btn btn-solid-gold" href="tel:+9765478998">📞 अहिले नै कल गर्नुहोस्</a>
       </div>
       <div class="trust-row">
         <div class="trust-item"><strong>५.०★</strong><span>गुगल रेटिङ (९ समीक्षा)</span></div>
@@ -477,12 +575,12 @@
       <p>जन्मदेखि विवाह, वास्तु, ग्रहशान्ति सम्म — हरेक संस्कारमा परम्परागत वैदिक विधि अनुसार परामर्श।</p>
     </div>
     <div class="svc-grid">
-      <div class="svc-card reveal"><div class="svc-glyph">☽</div><h3>कुण्डली विश्लेषण</h3><p>जन्म कुण्डली तयारी, ग्रह स्थिति, दशा-भुक्ति विश्लेषण, र जीवनका प्रश्नहरूको वैदिक समाधान।</p><a class="svc-link" href="https://wa.me/977-9765478998?text=नमस्ते%2C%20मलाई%20कुण्डली%20विश्लेषण%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">♃</div><h3>वैवाहिक मिलान</h3><p>वर-वधू कुण्डली मिलान, गुण मिलान, भाकुट, नाडी, गण, ग्रह मैत्री जाँच।</p><a class="svc-link" href="https://wa.me/977-9765478998?text=नमस्ते%2C%20मलाई%20वैवाहिक%20मिलान%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">🕉</div><h3>पूजा तथा कर्मकाण्ड</h3><p>षोडश संस्कारका सम्पूर्ण वैदिक विधि, ब्रतबन्ध, पास्नी, श्राद्ध लगायत।</p><a class="svc-link" href="https://wa.me/977-9765478998?text=नमस्ते%2C%20मलाई%20पूजा%2Fकर्मकाण्ड%20बारे%20जान्न%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">♄</div><h3>ग्रहशान्ति पूजा</h3><p>अशुभ ग्रह दशाको प्रभाव कम गर्न विधिपूर्वक नवग्रह शान्ति पूजा।</p><a class="svc-link" href="https://wa.me/977-9765478998?text=नमस्ते%2C%20मलाई%20ग्रहशान्ति%20पूजा%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">⌂</div><h3>वास्तु परामर्श</h3><p>घर, पसल वा कार्यालयको वास्तु दोष पहिचान गरी सुधारका उपायहरू।</p><a class="svc-link" href="https://wa.me/977-9765478998?text=नमस्ते%2C%20मलाई%20वास्तु%20परामर्श%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">☿</div><h3>व्यवसाय ज्योतिष</h3><p>व्यवसाय सुरु, नामकरण, मुहूर्त र करियर सम्बन्धी ग्रह अनुकूलता जाँच।</p><a class="svc-link" href="https://wa.me/977-9765478998?text=नमस्ते%2C%20मलाई%20व्यवसाय%20ज्योतिष%20परामर्श%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card reveal"><div class="svc-glyph">☽</div><h3>कुण्डली विश्लेषण</h3><p>जन्म कुण्डली तयारी, ग्रह स्थिति, दशा-भुक्ति विश्लेषण, र जीवनका प्रश्नहरूको वैदिक समाधान।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20कुण्डली%20विश्लेषण%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card reveal"><div class="svc-glyph">♃</div><h3>वैवाहिक मिलान</h3><p>वर-वधू कुण्डली मिलान, गुण मिलान, भाकुट, नाडी, गण, ग्रह मैत्री जाँच।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20वैवाहिक%20मिलान%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card reveal"><div class="svc-glyph">🕉</div><h3>पूजा तथा कर्मकाण्ड</h3><p>षोडश संस्कारका सम्पूर्ण वैदिक विधि, ब्रतबन्ध, पास्नी, श्राद्ध लगायत।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20पूजा%2Fकर्मकाण्ड%20बारे%20जान्न%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card reveal"><div class="svc-glyph">♄</div><h3>ग्रहशान्ति पूजा</h3><p>अशुभ ग्रह दशाको प्रभाव कम गर्न विधिपूर्वक नवग्रह शान्ति पूजा।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20ग्रहशान्ति%20पूजा%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card reveal"><div class="svc-glyph">⌂</div><h3>वास्तु परामर्श</h3><p>घर, पसल वा कार्यालयको वास्तु दोष पहिचान गरी सुधारका उपायहरू।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20वास्तु%20परामर्श%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card reveal"><div class="svc-glyph">☿</div><h3>व्यवसाय ज्योतिष</h3><p>व्यवसाय सुरु, नामकरण, मुहूर्त र करियर सम्बन्धी ग्रह अनुकूलता जाँच।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20व्यवसाय%20ज्योतिष%20परामर्श%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
     </div>
   </div>
 </section>
@@ -494,8 +592,8 @@
       <p>जन्म मिति, समय र स्थान पठाउनुहोस् — विस्तृत विश्लेषण सहित परामर्श पाउनुहोस्।</p>
     </div>
     <div class="btns">
-      <a class="btn btn-white" href="https://wa.me/977-9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20कुण्डली%20जाँच%20गराउन%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp मा पठाउनुहोस्</a>
-      <a class="btn btn-ghost-white" href="tel:+977-9765478998">📞 सिधै कल गर्नुहोस्</a>
+      <a class="btn btn-white" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20कुण्डली%20जाँच%20गराउन%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp मा पठाउनुहोस्</a>
+      <a class="btn btn-ghost-white" href="tel:9765478998">📞 सिधै कल गर्नुहोस्</a>
     </div>
   </div>
 </div>
@@ -577,7 +675,7 @@
       <h3>पण्डित शालिग्राम गुरु</h3>
       <div class="role">संस्थापक ज्योतिषाचार्य · धरान, सुनसरी</div>
       <p>तपस्या, श्रद्धा र सत्य ज्योतिषको साधनामा बिताएका ५० वर्षभन्दा बढी समयमा, धरान र पूर्वाञ्चलका हजारौं परिवारलाई ग्रह-नक्षत्रको मार्गदर्शन दिइसक्नुभएको छ।</p>
-      <a class="btn btn-primary" href="https://wa.me/9779765478998?text=नमस्ते%2C%20मलाई%20पण्डित%20शालिग्राम%20गुरुसँग%20परामर्श%20चाहियो।" target="_blank" rel="noopener">💬 गुरुसँग सम्पर्क गर्नुहोस्</a>
+      <a class="btn btn-primary" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20पण्डित%20शालिग्राम%20गुरुसँग%20परामर्श%20चाहियो।" target="_blank" rel="noopener">💬 गुरुसँग सम्पर्क गर्नुहोस्</a>
     </div>
     <div class="about-copy reveal">
       <h2>परम्परागत ज्ञान, वर्तमान समयको भरोसा</h2>
@@ -630,7 +728,7 @@
       <div class="contact-card reveal">
         <h3>विवरण</h3>
         <div class="contact-row"><span class="ic">📍</span><span>R79G+CQW, जनपथ रोड, धरान-५६७००, सुनसरी</span></div>
-        <div class="contact-row"><span class="ic">📞</span><span><a href="tel:+9779765478998">+977 976-5478998</a></span></div>
+        <div class="contact-row"><span class="ic">📞</span><span><a href="tel:+9765478998">+977 976-5478998</a></span></div>
         <div class="contact-row"><span class="ic">🕐</span><span>सम्पर्कको लागि २४ घण्टा उपलब्ध</span></div>
         <div class="contact-row"><span class="ic">🌐</span><span><a href="https://dharanjyotishkendra.github.io/dharan-jyotish-kendra/" target="_blank" rel="noopener">https://dharanjyotishkendra.github.io/dharan-jyotish-kendra/</a></span></div>
         <div class="contact-row"><span class="ic">🗺️</span><span><a href="https://www.google.com/maps/search/?api=1&query=Dharan+Jyotish+Kendra+Jana+Path+Dharan" target="_blank" rel="noopener">गुगल म्यापमा हेर्नुहोस्</a></span></div>
@@ -639,8 +737,8 @@
         <h3>तुरुन्तै सल्लाह चाहियो?</h3>
         <p>WhatsApp मार्फत आफ्नो समस्या लेखेर पठाउनुहोस्, वा सिधै कल गर्नुहोस् — हामी चाँडै जवाफ दिनेछौं।</p>
         <div class="btns">
-          <a class="btn btn-primary" href="https://wa.me/9779765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
-          <a class="btn btn-solid-gold" href="tel:+9779765478998">📞 कल गर्नुहोस्</a>
+          <a class="btn btn-primary" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="btn btn-solid-gold" href="tel:9765478998">📞 कल गर्नुहोस्</a>
         </div>
       </div>
     </div>
@@ -652,11 +750,11 @@
   <p style="margin-top:6px;">जनपथ रोड, धरान-५६७००, सुनसरी, नेपाल</p>
 </footer>
 
-<a class="float-wa" href="https://wa.me/9779765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
+<a class="float-wa" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
 
 <div class="mobile-cta-bar">
-  <a class="call" href="tel:+9779765478998">📞 कल गर्नुहोस्</a>
-  <a class="wa" href="https://wa.me/9779765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a class="call" href="tel:9765478998">📞 कल गर्नुहोस्</a>
+  <a class="wa" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
 </div>
 
 <script>
@@ -687,6 +785,26 @@
     els.forEach(el=>io.observe(el));
   })();
 </script>
+<footer class="footer">
 
+    
+
+    
+
+    <span class="footer-brand">
+        <strong style="color:#000;">Website Developed by :</strong>
+        <span class="code">CODE</span><span class="play">PLAY</span>
+        <span class="itsolution"> IT SOLUTION</span>
+        <span class="pvt"> PVT. LTD.</span>
+    </span>
+
+    
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📞
+    <a href="tel:9842147661" class="footer-phone">
+        9842147661
+    </a>
+
+</footer>
 </body>
 </html>
