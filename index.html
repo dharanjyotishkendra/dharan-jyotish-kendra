@@ -382,6 +382,91 @@
   }
   @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
   @media(max-width:640px){.float-wa{display:none;}}
+    .footer {
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 16px 12px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #555;
+  }
+  .footer-brand,
+  .footer-phone {
+    display: inline-block;
+    animation: heartbeat 1.4s infinite;
+    transform-origin: center;
+  }
+  .footer-brand {
+    font-weight: 900;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+  .code {
+    color: #000;
+    font-weight: 900;
+  }
+  .play {
+    color: #0A3D91;
+    font-weight: 900;
+    margin-left: -1px;
+  }
+  .itsolution {
+    font-weight: 900;
+    background: linear-gradient(90deg,#0F9D58,#34C759,#00C853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  .pvt {
+    color: #666;
+    font-weight: 700;
+  }
+  .footer-phone {
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 900;
+    background: linear-gradient(90deg,#0F9D58,#34C759,#00C853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: transform .3s ease;
+  }
+  .footer-phone:hover,
+  .footer-brand:hover {
+    transform: scale(1.08);
+  }
+  @keyframes heartbeat {
+    0%   { transform: scale(1); }
+    15%  { transform: scale(1.10); }
+    30%  { transform: scale(1); }
+    45%  { transform: scale(1.10); }
+    60%  { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+  @media (max-width:768px){
+    .footer{
+      font-size:14px;
+      padding:14px 10px;
+    }
+    .footer-brand{
+      display:block;
+      font-size:16px;
+      margin:8px 0;
+      white-space:normal;
+    }
+    .footer-phone{
+      display:inline-block;
+      font-size:16px;
+      margin-top:6px;
+    }
+    .separator{
+      display:none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -688,6 +773,16 @@
     els.forEach(el=>io.observe(el));
   })();
 </script>
-
+<!-- ===== SECOND FOOTER ===== -->
+<footer class="footer">
+    <span class="footer-brand">
+        <strong style="color:#000;">Website Developed by :</strong>
+        <span class="code">CODE</span><span class="play">PLAY</span>
+        <span class="itsolution"> IT SOLUTION</span>
+        <span class="pvt"> PVT. LTD.</span>
+    </span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📞
+    <a href="tel:9842147661" class="footer-phone">9842147661</a>
+</footer>
 </body>
 </html>
