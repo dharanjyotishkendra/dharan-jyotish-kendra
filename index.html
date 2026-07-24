@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-  <style>
-  /* ===== PROTECTION: Text Select Disable ===== */
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2126676668960770"
+     crossorigin="anonymous"></script>
+<style>
+/* ===== PROTECTION: Text Select Disable ===== */
 * {
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
@@ -16,7 +18,93 @@ input, textarea, [contenteditable="true"] {
     -ms-user-select: text !important;
     user-select: text !important;
 }
-    </style>
+
+/* ===== PRIVACY POLICY POPUP ===== */
+#privacyPopup{
+    display:none;
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    z-index:99999;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(10px);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+#privacyPopup.show{display:flex;}
+#privacyPopup .popup-content{
+    background:#fff;
+    max-width:800px;
+    width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:20px;
+    padding:40px 35px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+#privacyPopup .popup-content h1{
+    font-size:28px;
+    color:#0B0A1F;
+    border-bottom:3px solid #F2A93B;
+    padding-bottom:15px;
+    margin-bottom:25px;
+}
+#privacyPopup .popup-content h2{
+    font-size:20px;
+    color:#0B0A1F;
+    margin:25px 0 12px;
+}
+#privacyPopup .popup-content p{
+    color:#444;
+    margin-bottom:12px;
+    font-size:15px;
+    line-height:1.8;
+}
+#privacyPopup .popup-content ul{
+    margin:10px 0 18px 25px;
+}
+#privacyPopup .popup-content ul li{
+    margin-bottom:6px;
+    color:#444;
+    font-size:14px;
+}
+#privacyPopup .popup-content .close-btn{
+    position:sticky;
+    top:0;
+    float:right;
+    background:#C1440E;
+    color:#fff;
+    border:none;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+    transition:transform .3s;
+    z-index:10;
+}
+#privacyPopup .popup-content .close-btn:hover{transform:rotate(90deg);}
+#privacyPopup .popup-content .back-btn{
+    display:inline-block;
+    background:#C1440E;
+    color:#fff;
+    padding:12px 28px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    margin-top:15px;
+    border:none;
+    cursor:pointer;
+    transition:background .3s;
+}
+#privacyPopup .popup-content .back-btn:hover{background:#A03A0C;}
+#privacyPopup .popup-content .date{color:#888;font-size:14px;margin-bottom:20px;}
+@media(max-width:600px){
+    #privacyPopup .popup-content{padding:25px 18px;}
+    #privacyPopup .popup-content h1{font-size:22px;}
+}
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🔮 धरान ज्योतिष केन्द्र | पण्डित शालिग्राम गुरु — वैदिक ज्योतिष, पूजा तथा वास्तु सेवा</title>
@@ -54,88 +142,126 @@ input, textarea, [contenteditable="true"] {
     padding-bottom:64px;
   }
 
-  /* ===== Page loader / curtain ===== */
+  /* ===== LOADER ===== */
   #loader{
-    position:fixed;inset:0;z-index:999;background:var(--night-deep);
-    display:flex;align-items:center;justify-content:center;
-    transition:opacity .7s var(--ease),visibility .7s var(--ease);
+    position:fixed;inset:0;z-index:9999;background:var(--night-deep);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    transition:opacity .8s ease,visibility .8s ease;
   }
   #loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
   #loader .om-load{
-    font-family:'Noto Serif Devanagari',serif;font-size:52px;color:var(--marigold-soft);
+    font-family:'Noto Serif Devanagari',serif;font-size:60px;color:var(--marigold-soft);
     animation:omPulse 1.4s ease-in-out infinite;
   }
-  @keyframes omPulse{0%,100%{transform:scale(.85);opacity:.55;}50%{transform:scale(1.08);opacity:1;}}
+  @keyframes omPulse{0%,100%{transform:scale(.85);opacity:.55;}50%{transform:scale(1.1);opacity:1;}}
   #loader .load-ring{
-    position:absolute;width:120px;height:120px;border-radius:50%;
-    border:1.5px solid rgba(242,169,59,0.25);border-top-color:var(--marigold);
+    position:absolute;width:130px;height:130px;border-radius:50%;
+    border:2px solid rgba(242,169,59,0.2);border-top-color:var(--marigold);
     animation:spin 1.1s linear infinite;
   }
   @keyframes spin{to{transform:rotate(360deg);}}
+  #loader .load-text{
+    color:rgba(247,241,228,0.4);font-size:12px;margin-top:60px;letter-spacing:3px;
+    animation:fadeText 1.5s ease-in-out infinite;
+  }
+  @keyframes fadeText{0%,100%{opacity:.3;}50%{opacity:.8;}}
 
-  /* ===== Scroll progress bar ===== */
+  /* ===== SCROLL PROGRESS ===== */
   #scrollProgress{
     position:fixed;top:0;left:0;height:3px;z-index:120;
     background:linear-gradient(90deg,var(--vermilion),var(--marigold),var(--saffron));
     width:0%;transition:width .1s linear;
-    box-shadow:0 0 10px rgba(242,169,59,0.6);
+    box-shadow:0 0 12px rgba(242,169,59,0.6);
   }
 
-  /* ===== Back to top ===== */
+  /* ===== BACK TO TOP ===== */
   #toTop{
     position:fixed;right:24px;bottom:96px;z-index:100;width:48px;height:48px;
     border-radius:50%;background:var(--night-deep);display:flex;align-items:center;justify-content:center;
-    color:var(--marigold-soft);font-size:18px;cursor:pointer;opacity:0;pointer-events:none;
-    transform:translateY(12px) scale(.85);transition:opacity .3s var(--ease),transform .3s var(--ease);
+    color:var(--marigold-soft);font-size:20px;cursor:pointer;opacity:0;pointer-events:none;
+    transform:translateY(12px) scale(.85);transition:all .3s var(--ease);
+    border:2px solid rgba(242,169,59,0.3);
   }
   #toTop.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);}
-  #toTop svg{position:absolute;inset:0;transform:rotate(-90deg);}
-  #toTop svg circle{fill:none;stroke:var(--marigold);stroke-width:2.5;stroke-linecap:round;
-    stroke-dasharray:138;stroke-dashoffset:138;transition:stroke-dashoffset .1s linear;}
-  @media(max-width:640px){#toTop{bottom:92px;right:16px;width:42px;height:42px;}}
+  #toTop:hover{background:var(--marigold);color:var(--night-deep);border-color:var(--marigold);}
 
-  /* Button ripple */
-  .btn{position:relative;overflow:hidden;}
-  .btn .ripple{
-    position:absolute;border-radius:50%;background:rgba(255,255,255,0.55);
+  /* ===== HEARTBEAT LOGO ===== */
+  .heartbeat-logo{
+    animation:heartbeat 1.5s ease-in-out infinite;
+    display:inline-block;
+  }
+  @keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    14%{transform:scale(1.15);}
+    28%{transform:scale(1);}
+    42%{transform:scale(1.12);}
+    70%{transform:scale(1);}
+  }
+
+  /* ===== HOVER GLOW ===== */
+  .hover-glow{
+    transition:all .3s ease;
+  }
+  .hover-glow:hover{
+    filter:drop-shadow(0 0 20px rgba(242,169,59,0.5));
+    transform:translateY(-3px);
+  }
+
+  /* ===== RIPPLE ===== */
+  .ripple-btn{
+    position:relative;
+    overflow:hidden;
+  }
+  .ripple-btn .ripple{
+    position:absolute;border-radius:50%;background:rgba(255,255,255,0.5);
     transform:scale(0);animation:rippleAnim .6s ease-out forwards;pointer-events:none;
   }
-  @keyframes rippleAnim{to{transform:scale(2.6);opacity:0;}}
+  @keyframes rippleAnim{to{transform:scale(2.5);opacity:0;}}
 
-  /* Mandala section divider */
-  .mandala-divider{display:flex;align-items:center;justify-content:center;padding:6px 0;background:inherit;position:relative;}
-  .mandala-divider svg{width:46px;height:46px;opacity:.55;animation:mandalaSpin 22s linear infinite;}
-  .mandala-divider::before,.mandala-divider::after{
-    content:"";flex:1;max-width:220px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--line));
+  /* ===== CONFETTI ===== */
+  .confetti-container{
+    position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;
+    overflow:hidden;
   }
-  .mandala-divider::after{background:linear-gradient(90deg,var(--line),transparent);}
-  @keyframes mandalaSpin{to{transform:rotate(360deg);}}
-
-  /* Active nav link */
-  .nav-links a{position:relative;}
-  .nav-links a::after{
-    content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--vermilion);
-    transition:width .3s var(--ease);
+  .confetti{
+    position:absolute;width:10px;height:10px;opacity:0;
+    animation:confettiFall linear forwards;
   }
-  .nav-links a.active{color:var(--vermilion);}
-  .nav-links a.active::after{width:100%;}
+  @keyframes confettiFall{
+    0%{opacity:1;transform:translateY(-10px) rotate(0deg);}
+    100%{opacity:0;transform:translateY(110vh) rotate(720deg);}
+  }
 
-  header.site-nav{transition:padding .3s var(--ease),box-shadow .3s var(--ease);}
-  header.site-nav.scrolled .nav-row{padding-top:7px;padding-bottom:7px;}
-  header.site-nav.scrolled{box-shadow:0 8px 26px rgba(36,26,18,0.09);}
+  /* ===== AOS ===== */
+  .aos-item{
+    opacity:0;
+    transform:translateY(30px) scale(.95);
+    transition:all .8s cubic-bezier(.22,.75,.28,1);
+  }
+  .aos-item.aos-visible{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  .aos-item.aos-delay-1{transition-delay:.1s;}
+  .aos-item.aos-delay-2{transition-delay:.2s;}
+  .aos-item.aos-delay-3{transition-delay:.3s;}
+  .aos-item.aos-delay-4{transition-delay:.4s;}
+  .aos-item.aos-delay-5{transition-delay:.5s;}
 
-  /* tilt-ready cards */
-  .svc-card,.graha-card,.puja-card{will-change:transform;transform-style:preserve-3d;}
-  .svc-card{transition:transform .25s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);}
+  /* ===== COUNT-UP ===== */
+  .count-number{
+    display:inline-block;
+    font-family:'Noto Serif Devanagari',serif;
+    font-size:32px;
+    font-weight:800;
+    color:var(--marigold-soft);
+  }
+
+  .btn{position:relative;overflow:hidden;cursor:pointer;}
   h1,h2,h3,.display{font-family:'Noto Serif Devanagari','Poppins',serif;}
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1240px;margin:0 auto;padding:0 26px;}
-  @media(prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
-  }
 
-  /* ===== Ticker ===== */
   .ticker{
     background:var(--night-deep);color:var(--marigold-soft);
     font-size:12px;font-weight:500;letter-spacing:.3px;
@@ -145,7 +271,6 @@ input, textarea, [contenteditable="true"] {
   .ticker-track{display:inline-flex;gap:48px;animation:scroll 28s linear infinite;padding-left:100%;}
   @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-100%);}}
 
-  /* ===== Nav ===== */
   header.site-nav{
     position:sticky;top:0;z-index:90;
     background:rgba(247,241,228,0.95);backdrop-filter:blur(14px);
@@ -188,7 +313,6 @@ input, textarea, [contenteditable="true"] {
   @media(max-width:900px){.nav-links{display:none;}}
   @media(max-width:560px){.nav-wa{display:none;}}
 
-  /* ===== Hero ===== */
   .hero{
     position:relative;
     background:radial-gradient(130% 100% at 50% 0%,var(--night-soft) 0%,var(--night) 45%,var(--night-deep) 100%);
@@ -221,6 +345,7 @@ input, textarea, [contenteditable="true"] {
   .trust-item strong{font-size:22px;color:var(--marigold-soft);font-family:'Noto Serif Devanagari',serif;}
   .trust-item span{font-size:12px;color:rgba(247,241,228,0.65);}
 
+  /* ===== KUNDALI CHART ===== */
   .chart-wrap{position:relative;display:flex;justify-content:center;}
   .chart-caption{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(247,241,228,0.55);letter-spacing:.5px;white-space:nowrap;}
   .kundali-glow{filter:drop-shadow(0 0 34px rgba(242,169,59,0.4));max-width:100%;height:auto;}
@@ -241,10 +366,7 @@ input, textarea, [contenteditable="true"] {
   }
   .section-head h2{font-size:clamp(25px,3.4vw,36px);color:var(--night-deep);margin-bottom:12px;}
   .section-head p{color:var(--ink-soft);font-size:15px;}
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
-  .reveal.in{opacity:1;transform:none;}
 
-  /* ===== CTA strip (mid-page) ===== */
   .cta-strip{
     background:linear-gradient(120deg,var(--vermilion),var(--marigold));
     color:#fff;padding:38px 0;
@@ -258,7 +380,6 @@ input, textarea, [contenteditable="true"] {
   .btn-ghost-white{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.55);}
   .btn-ghost-white:hover{background:rgba(255,255,255,0.22);}
 
-  /* ===== Services ===== */
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   @media(max-width:980px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:620px){.svc-grid{grid-template-columns:1fr;}}
@@ -276,7 +397,6 @@ input, textarea, [contenteditable="true"] {
   .svc-card p{font-size:13.8px;color:var(--ink-soft);flex-grow:1;}
   .svc-card .svc-link{margin-top:14px;font-size:13px;font-weight:700;color:var(--vermilion);display:inline-flex;align-items:center;gap:5px;}
 
-  /* ===== Navgraha ===== */
   .graha-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
   @media(max-width:860px){.graha-grid{grid-template-columns:repeat(3,1fr);}}
   @media(max-width:580px){.graha-grid{grid-template-columns:repeat(2,1fr);}}
@@ -287,7 +407,6 @@ input, textarea, [contenteditable="true"] {
   .graha-card .planet{font-size:11.5px;color:var(--ink-soft);}
   .graha-card .color-dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-top:6px;}
 
-  /* ===== Puja ===== */
   .puja-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   @media(max-width:860px){.puja-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:540px){.puja-grid{grid-template-columns:1fr;}}
@@ -297,7 +416,6 @@ input, textarea, [contenteditable="true"] {
   .puja-card h4{font-size:15.5px;color:var(--night-deep);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
   .puja-card p{font-size:12.8px;color:var(--ink-soft);}
 
-  /* ===== 16 Sanskar ===== */
   .sankar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;}
   @media(max-width:860px){.sankar-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:540px){.sankar-grid{grid-template-columns:1fr;}}
@@ -307,7 +425,6 @@ input, textarea, [contenteditable="true"] {
   .sankar-card h4{font-size:14.5px;margin:6px 0;}
   .sankar-card p{font-size:11.5px;color:rgba(247,241,228,0.7);}
 
-  /* ===== About ===== */
   .about{background:var(--parchment-dim);}
   .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:46px;align-items:center;}
   @media(max-width:880px){.about-grid{grid-template-columns:1fr;}}
@@ -324,7 +441,6 @@ input, textarea, [contenteditable="true"] {
   .stat-strip div strong{display:block;font-size:27px;color:var(--vermilion);font-family:'Noto Serif Devanagari',serif;}
   .stat-strip div span{font-size:12px;color:var(--ink-soft);}
 
-  /* ===== Process ===== */
   .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
   @media(max-width:880px){.process-grid{grid-template-columns:1fr;gap:26px;}}
   .process-step{position:relative;padding:0 18px;text-align:center;}
@@ -341,7 +457,6 @@ input, textarea, [contenteditable="true"] {
   .process-step h3{font-size:15.5px;color:var(--night-deep);margin-bottom:8px;}
   .process-step p{font-size:13px;color:var(--ink-soft);}
 
-  /* ===== Trust band ===== */
   .trust-band{background:var(--night-deep);color:var(--parchment);text-align:center;}
   .stars-big{color:var(--marigold);font-size:26px;letter-spacing:5px;margin-bottom:10px;}
   .trust-band h2{font-family:'Noto Serif Devanagari',serif;font-size:26px;margin-bottom:8px;}
@@ -354,7 +469,6 @@ input, textarea, [contenteditable="true"] {
   }
   .social-pill:hover{background:rgba(242,169,59,0.22);border-color:var(--marigold);}
 
-  /* ===== Contact ===== */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
   @media(max-width:880px){.contact-grid{grid-template-columns:1fr;}}
   .contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
@@ -367,11 +481,9 @@ input, textarea, [contenteditable="true"] {
   .contact-card.dark p{color:rgba(247,241,228,0.75);font-size:14px;margin-bottom:22px;}
   .contact-card.dark .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
-  /* ===== Footer ===== */
   footer{background:var(--night-deep);color:rgba(247,241,228,0.55);text-align:center;padding:34px 20px;font-size:12.5px;}
   footer strong{color:var(--marigold-soft);}
 
-  /* ===== Sticky mobile CTA bar ===== */
   .mobile-cta-bar{
     display:none;position:fixed;left:0;right:0;bottom:0;z-index:110;
     background:var(--night-deep);border-top:1px solid rgba(242,169,59,0.25);
@@ -388,7 +500,6 @@ input, textarea, [contenteditable="true"] {
     body{padding-bottom:78px;}
   }
 
-  /* Desktop floating WhatsApp */
   .float-wa{
     position:fixed;bottom:24px;right:24px;z-index:100;
     display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2FBF71,#128C7E);
@@ -397,6 +508,7 @@ input, textarea, [contenteditable="true"] {
   }
   @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
   @media(max-width:640px){.float-wa{display:none;}}
+
   .footer {
     background: #fff;
     border-top: 1px solid #ddd;
@@ -406,47 +518,40 @@ input, textarea, [contenteditable="true"] {
     font-size: 15px;
     line-height: 1.8;
     color: #555;
-}
-
-.footer-brand,
-.footer-phone {
+  }
+  .footer-brand,
+  .footer-phone {
     display: inline-block;
     animation: heartbeat 1.4s infinite;
     transform-origin: center;
-}
-
-.footer-brand {
+  }
+  .footer-brand {
     font-weight: 900;
     font-size: 18px;
     white-space: nowrap;
-}
-
-.code {
+  }
+  .code {
     color: #000;
     font-weight: 900;
-}
-
-.play {
+  }
+  .play {
     color: #0A3D91;
     font-weight: 900;
     margin-left: -1px;
-}
-
-.itsolution {
+  }
+  .itsolution {
     font-weight: 900;
     background: linear-gradient(90deg,#0F9D58,#34C759,#00C853);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-}
-
-.pvt {
+  }
+  .pvt {
     color: #666;
     font-weight: 700;
-}
-
-.footer-phone {
+  }
+  .footer-phone {
     text-decoration: none;
     font-size: 17px;
     font-weight: 900;
@@ -456,49 +561,85 @@ input, textarea, [contenteditable="true"] {
     background-clip: text;
     color: transparent;
     transition: transform .3s ease;
-}
-
-.footer-phone:hover,
-.footer-brand:hover {
+  }
+  .footer-phone:hover,
+  .footer-brand:hover {
     transform: scale(1.08);
-}
-
-@keyframes heartbeat {
+  }
+  @keyframes heartbeat {
     0%   { transform: scale(1); }
     15%  { transform: scale(1.10); }
     30%  { transform: scale(1); }
     45%  { transform: scale(1.10); }
     60%  { transform: scale(1); }
     100% { transform: scale(1); }
-}
-
-@media (max-width:768px){
+  }
+  @media (max-width:768px){
     .footer{
-        font-size:14px;
-        padding:14px 10px;
+      font-size:14px;
+      padding:14px 10px;
     }
-
     .footer-brand{
-        display:block;
-        font-size:16px;
-        margin:8px 0;
-        white-space:normal;
+      display:block;
+      font-size:16px;
+      margin:8px 0;
+      white-space:normal;
     }
-
     .footer-phone{
-        display:inline-block;
-        font-size:16px;
-        margin-top:6px;
+      display:inline-block;
+      font-size:16px;
+      margin-top:6px;
     }
-
     .separator{
-        display:none;
+      display:none;
     }
-}
+  }
 </style>
 </head>
 <body>
 
+<!-- ===== PRIVACY POLICY POPUP ===== -->
+<div id="privacyPopup">
+  <div class="popup-content">
+    <button class="close-btn" onclick="closePrivacy()">✕</button>
+    <h1>🔒 गोपनीयता नीति (Privacy Policy)</h1>
+    <p class="date">अन्तिम अपडेट: <span id="privacyDate"></span></p>
+    <p>धरान ज्योतिष केन्द्र (Dharan Jyotish Kendra) तपाईंको गोपनीयतालाई अत्यन्त महत्त्व दिन्छ। यो गोपनीयता नीतिले हामी कसरी तपाईंको व्यक्तिगत जानकारी सङ्कलन, प्रयोग र सुरक्षा गर्छौं भन्ने बारेमा स्पष्ट पार्छ।</p>
+    <h2>📌 १. हामी कसरी जानकारी सङ्कलन गर्छौं?</h2>
+    <ul><li><strong>तपाईंले स्वयम् प्रदान गर्नुभएको जानकारी:</strong> WhatsApp, फोन, वा फारम मार्फत</li><li><strong>स्वचालित रूपमा सङ्कलन:</strong> IP ठेगाना, ब्राउजर प्रकार, भ्रमण पृष्ठ</li><li><strong>कुकीज (Cookies):</strong> अनुभव सहज बनाउन र प्रदर्शन सुधार गर्न</li></ul>
+    <h2>📌 २. हामी के जानकारी सङ्कलन गर्छौं?</h2>
+    <ul><li>नाम, ठेगाना, फोन नम्बर, इमेल</li><li>जन्म मिति, समय, र स्थान (ज्योतिषीय परामर्शको लागि)</li><li>तपाईंको रुचि र आवश्यकताहरू</li></ul>
+    <h2>📌 ३. हामी जानकारी कसरी प्रयोग गर्छौं?</h2>
+    <ul><li>✅ ज्योतिषीय परामर्श र कुण्डली विश्लेषण सेवा प्रदान गर्न</li><li>✅ तपाईंको प्रश्नहरूको जवाफ दिन र ग्राहक सेवा प्रदान गर्न</li><li>✅ पूजा, अनुष्ठान, र कर्मकाण्डको व्यवस्थापन गर्न</li><li>✅ वेबसाइटको प्रदर्शन सुधार गर्न</li></ul>
+    <h2>📌 ४. हामी जानकारी कसरी सुरक्षित गर्छौं?</h2>
+    <ul><li>🔒 एन्क्रिप्टेड भण्डारण</li><li>🔒 नियमित सुरक्षा अडिट</li><li>🔒 सिमित कर्मचारी पहुँच</li></ul>
+    <h2>📌 ५. तपाईंको अधिकारहरू</h2>
+    <ul><li>✅ आफ्नो व्यक्तिगत जानकारी हेर्न, सच्याउन वा मेटाउन</li><li>✅ हामीले सङ्कलन गरेको जानकारीको बारेमा जान्न</li><li>✅ कुकीज अस्वीकार गर्न (ब्राउजर सेटिङमा)</li></ul>
+    <h2>📌 ६. तेस्रो-पक्ष सेवाहरू</h2>
+    <ul><li><strong>Google Analytics:</strong> वेबसाइट ट्राफिक विश्लेषण</li><li><strong>Google AdSense:</strong> विज्ञापन प्रदर्शन</li><li><strong>WhatsApp:</strong> ग्राहक सम्पर्क</li></ul>
+    <h2>📌 ७. हामीलाई सम्पर्क गर्नुहोस्</h2>
+    <p>📞 <strong><a href="tel:9765478998" style="color:#C1440E;">+977 976-5478998</a></strong><br>📍 <strong>R79G+CQW, जनपथ रोड, धरान-५६७००, सुनसरी</strong></p>
+    <button class="back-btn" onclick="closePrivacy()">🏠 फर्कनुहोस्</button>
+  </div>
+</div>
+
+<!-- ===== LOADER ===== -->
+<div id="loader">
+  <div class="load-ring"></div>
+  <div class="om-load">ॐ</div>
+  <div class="load-text">धरान ज्योतिष केन्द्र</div>
+</div>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div id="scrollProgress"></div>
+
+<!-- ===== CONFETTI CONTAINER ===== -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<!-- ===== BACK TO TOP ===== -->
+<div id="toTop">↑</div>
+
+<!-- ===== TICKER ===== -->
 <div class="ticker">
   <div class="ticker-track">
     <span>🕉️ धरान ज्योतिष केन्द्र — जनपथ, धरान, सुनसरी</span>
@@ -513,10 +654,11 @@ input, textarea, [contenteditable="true"] {
   </div>
 </div>
 
+<!-- ===== NAV ===== -->
 <header class="site-nav">
   <div class="wrap nav-row">
     <div class="brand">
-      <div class="brand-mark">ॐ</div>
+      <div class="brand-mark heartbeat-logo">ॐ</div>
       <div class="brand-text">
         <strong>धरान ज्योतिष केन्द्र</strong>
         <small>पण्डित शालिग्राम गुरु · जनपथ, धरान</small>
@@ -537,25 +679,27 @@ input, textarea, [contenteditable="true"] {
   </div>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="stars" id="starsField"></div>
   <div class="wrap hero-grid">
-    <div>
+    <div class="aos-item">
       <span class="eyebrow">✦ ५०+ वर्षको ज्योतिषीय अनुभव · धरान, सुनसरी</span>
       <h1>तपाईंको जीवनको <em>ग्रह-नक्षत्र</em> बुझ्ने, धरानको भरपर्दो ज्योतिष केन्द्र</h1>
       <p class="lede">कुण्डली विश्लेषण, नवग्रह पूजा, ग्रहशान्ति, वैवाहिक मिलान, षोडश संस्कार, वास्तु परामर्श, र सम्पूर्ण हिन्दू कर्मकाण्ड — पण्डित शालिग्राम गुरुद्वारा श्रद्धा र अनुभवमा आधारित सेवा।</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp मा सम्पर्क गर्नुहोस्</a>
-        <a class="btn btn-solid-gold" href="tel:+9765478998">📞 अहिले नै कल गर्नुहोस्</a>
+        <a class="btn btn-primary ripple-btn" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp मा सम्पर्क गर्नुहोस्</a>
+        <a class="btn btn-solid-gold ripple-btn" href="tel:+9765478998">📞 अहिले नै कल गर्नुहोस्</a>
       </div>
       <div class="trust-row">
-        <div class="trust-item"><strong>५.०★</strong><span>गुगल रेटिङ (९ समीक्षा)</span></div>
-        <div class="trust-item"><strong>५०+</strong><span>वर्षको अनुभव</span></div>
+        <div class="trust-item"><strong class="count-number" data-count="5">0</strong><span>★ गुगल रेटिङ (९ समीक्षा)</span></div>
+        <div class="trust-item"><strong class="count-number" data-count="50">0</strong><span>+ वर्षको अनुभव</span></div>
         <div class="trust-item"><strong>२४ घण्टा</strong><span>सम्पर्कको लागि उपलब्ध</span></div>
       </div>
     </div>
 
-    <div class="chart-wrap">
+    <!-- ===== KUNDALI CHART ===== -->
+    <div class="chart-wrap aos-item aos-delay-2">
       <svg class="kundali-glow" width="360" height="360" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
         <path class="kundali-line" d="M40,40 L360,40 L360,360 L40,360 Z"/>
         <path class="kundali-line delay1" d="M40,40 L360,360 M360,40 L40,360"/>
@@ -583,122 +727,136 @@ input, textarea, [contenteditable="true"] {
   </div>
 </section>
 
+<!-- ===== DISPLAY AD ===== -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2126676668960770" data-ad-slot="YOUR_REAL_AD_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== SERVICES ===== -->
 <section id="services">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head aos-item">
       <span class="kicker">हाम्रा सेवाहरू</span>
       <h2>ज्योतिष, कर्मकाण्ड र वास्तु सम्बन्धी सम्पूर्ण सेवा</h2>
       <p>जन्मदेखि विवाह, वास्तु, ग्रहशान्ति सम्म — हरेक संस्कारमा परम्परागत वैदिक विधि अनुसार परामर्श।</p>
     </div>
     <div class="svc-grid">
-      <div class="svc-card reveal"><div class="svc-glyph">☽</div><h3>कुण्डली विश्लेषण</h3><p>जन्म कुण्डली तयारी, ग्रह स्थिति, दशा-भुक्ति विश्लेषण, र जीवनका प्रश्नहरूको वैदिक समाधान।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20कुण्डली%20विश्लेषण%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">♃</div><h3>वैवाहिक मिलान</h3><p>वर-वधू कुण्डली मिलान, गुण मिलान, भाकुट, नाडी, गण, ग्रह मैत्री जाँच।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20वैवाहिक%20मिलान%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">🕉</div><h3>पूजा तथा कर्मकाण्ड</h3><p>षोडश संस्कारका सम्पूर्ण वैदिक विधि, ब्रतबन्ध, पास्नी, श्राद्ध लगायत।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20पूजा%2Fकर्मकाण्ड%20बारे%20जान्न%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">♄</div><h3>ग्रहशान्ति पूजा</h3><p>अशुभ ग्रह दशाको प्रभाव कम गर्न विधिपूर्वक नवग्रह शान्ति पूजा।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20ग्रहशान्ति%20पूजा%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">⌂</div><h3>वास्तु परामर्श</h3><p>घर, पसल वा कार्यालयको वास्तु दोष पहिचान गरी सुधारका उपायहरू।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20वास्तु%20परामर्श%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
-      <div class="svc-card reveal"><div class="svc-glyph">☿</div><h3>व्यवसाय ज्योतिष</h3><p>व्यवसाय सुरु, नामकरण, मुहूर्त र करियर सम्बन्धी ग्रह अनुकूलता जाँच।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20व्यवसाय%20ज्योतिष%20परामर्श%20चाहियो।" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card aos-item aos-delay-1 hover-glow"><div class="svc-glyph">☽</div><h3>कुण्डली विश्लेषण</h3><p>जन्म कुण्डली तयारी, ग्रह स्थिति, दशा-भुक्ति विश्लेषण, र जीवनका प्रश्नहरूको वैदिक समाधान।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20कुण्डली%20विश्लेषण%20चाहियो。" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card aos-item aos-delay-2 hover-glow"><div class="svc-glyph">♃</div><h3>वैवाहिक मिलान</h3><p>वर-वधू कुण्डली मिलान, गुण मिलान, भाकुट, नाडी, गण, ग्रह मैत्री जाँच।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20वैवाहिक%20मिलान%20चाहियो。" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card aos-item aos-delay-3 hover-glow"><div class="svc-glyph">🕉</div><h3>पूजा तथा कर्मकाण्ड</h3><p>षोडश संस्कारका सम्पूर्ण वैदिक विधि, ब्रतबन्ध, पास्नी, श्राद्ध लगायत।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20पूजा%2Fकर्मकाण्ड%20बारे%20जान्न%20चाहियो。" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card aos-item aos-delay-4 hover-glow"><div class="svc-glyph">♄</div><h3>ग्रहशान्ति पूजा</h3><p>अशुभ ग्रह दशाको प्रभाव कम गर्न विधिपूर्वक नवग्रह शान्ति पूजा।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20ग्रहशान्ति%20पूजा%20चाहियो。" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card aos-item aos-delay-5 hover-glow"><div class="svc-glyph">⌂</div><h3>वास्तु परामर्श</h3><p>घर, पसल वा कार्यालयको वास्तु दोष पहिचान गरी सुधारका उपायहरू।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20वास्तु%20परामर्श%20चाहियो。" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
+      <div class="svc-card aos-item aos-delay-5 hover-glow"><div class="svc-glyph">☿</div><h3>व्यवसाय ज्योतिष</h3><p>व्यवसाय सुरु, नामकरण, मुहूर्त र करियर सम्बन्धी ग्रह अनुकूलता जाँच।</p><a class="svc-link" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20व्यवसाय%20ज्योतिष%20परामर्श%20चाहियो。" target="_blank" rel="noopener">परामर्श लिनुहोस् →</a></div>
     </div>
   </div>
 </section>
 
+<!-- ===== IN-ARTICLE AD ===== -->
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-2126676668960770" data-ad-slot="YOUR_REAL_AD_SLOT"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== CTA STRIP ===== -->
 <div class="cta-strip">
   <div class="wrap">
-    <div>
+    <div class="aos-item">
       <h3>आफ्नो कुण्डली आजै जाँच गर्नुहोस्</h3>
       <p>जन्म मिति, समय र स्थान पठाउनुहोस् — विस्तृत विश्लेषण सहित परामर्श पाउनुहोस्।</p>
     </div>
-    <div class="btns">
-      <a class="btn btn-white" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20कुण्डली%20जाँच%20गराउन%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp मा पठाउनुहोस्</a>
-      <a class="btn btn-ghost-white" href="tel:9765478998">📞 सिधै कल गर्नुहोस्</a>
+    <div class="btns aos-item aos-delay-2">
+      <a class="btn btn-white ripple-btn" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20कुण्डली%20जाँच%20गराउन%20चाहन्छु。" target="_blank" rel="noopener">💬 WhatsApp मा पठाउनुहोस्</a>
+      <a class="btn btn-ghost-white ripple-btn" href="tel:9765478998">📞 सिधै कल गर्नुहोस्</a>
     </div>
   </div>
 </div>
 
+<!-- ===== GRAHAS ===== -->
 <section id="grahas" style="background:var(--parchment-dim);">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head aos-item">
       <span class="kicker">नवग्रह</span>
       <h2>नौ ग्रहहरू — शुभ फल प्राप्तिको लागि पूजा एवं जाप</h2>
       <p>प्रत्येक ग्रहको विशेष मन्त्र, रङ, र जाप विधि अनुसार शान्ति पूजा गरिन्छ।</p>
     </div>
     <div class="graha-grid">
-      <div class="graha-card reveal"><span class="symbol">☀️</span><h4>सूर्य</h4><div class="planet">रवि · आदित्य</div><span class="color-dot" style="background:#FF4500;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">🌙</span><h4>चन्द्र</h4><div class="planet">सोम · चन्द्रमा</div><span class="color-dot" style="background:#DCD6C0;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">♂️</span><h4>मङ्गल</h4><div class="planet">कुज · अङ्गारक</div><span class="color-dot" style="background:#DC143C;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">☿</span><h4>बुध</h4><div class="planet">सौम्य · बुध</div><span class="color-dot" style="background:#228B22;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">♃</span><h4>गुरु</h4><div class="planet">बृहस्पति · देवगुरु</div><span class="color-dot" style="background:#DAA520;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">♀️</span><h4>शुक्र</h4><div class="planet">भार्गव · शुक्र</div><span class="color-dot" style="background:#C77DBB;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">♄</span><h4>शनि</h4><div class="planet">शनि · काल</div><span class="color-dot" style="background:#2F4F4F;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">🌑</span><h4>राहु</h4><div class="planet">राहु · छायाग्रह</div><span class="color-dot" style="background:#8B0000;"></span></div>
-      <div class="graha-card reveal"><span class="symbol">🌘</span><h4>केतु</h4><div class="planet">केतु · छायाग्रह</div><span class="color-dot" style="background:#708090;"></span></div>
+      <div class="graha-card aos-item aos-delay-1 hover-glow"><span class="symbol">☀️</span><h4>सूर्य</h4><div class="planet">रवि · आदित्य</div><span class="color-dot" style="background:#FF4500;"></span></div>
+      <div class="graha-card aos-item aos-delay-2 hover-glow"><span class="symbol">🌙</span><h4>चन्द्र</h4><div class="planet">सोम · चन्द्रमा</div><span class="color-dot" style="background:#DCD6C0;"></span></div>
+      <div class="graha-card aos-item aos-delay-3 hover-glow"><span class="symbol">♂️</span><h4>मङ्गल</h4><div class="planet">कुज · अङ्गारक</div><span class="color-dot" style="background:#DC143C;"></span></div>
+      <div class="graha-card aos-item aos-delay-4 hover-glow"><span class="symbol">☿</span><h4>बुध</h4><div class="planet">सौम्य · बुध</div><span class="color-dot" style="background:#228B22;"></span></div>
+      <div class="graha-card aos-item aos-delay-5 hover-glow"><span class="symbol">♃</span><h4>गुरु</h4><div class="planet">बृहस्पति · देवगुरु</div><span class="color-dot" style="background:#DAA520;"></span></div>
+      <div class="graha-card aos-item aos-delay-1 hover-glow"><span class="symbol">♀️</span><h4>शुक्र</h4><div class="planet">भार्गव · शुक्र</div><span class="color-dot" style="background:#C77DBB;"></span></div>
+      <div class="graha-card aos-item aos-delay-2 hover-glow"><span class="symbol">♄</span><h4>शनि</h4><div class="planet">शनि · काल</div><span class="color-dot" style="background:#2F4F4F;"></span></div>
+      <div class="graha-card aos-item aos-delay-3 hover-glow"><span class="symbol">🌑</span><h4>राहु</h4><div class="planet">राहु · छायाग्रह</div><span class="color-dot" style="background:#8B0000;"></span></div>
+      <div class="graha-card aos-item aos-delay-4 hover-glow"><span class="symbol">🌘</span><h4>केतु</h4><div class="planet">केतु · छायाग्रह</div><span class="color-dot" style="background:#708090;"></span></div>
     </div>
   </div>
 </section>
 
+<!-- ===== PUJAS ===== -->
 <section id="pujas">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head aos-item">
       <span class="kicker">पूजा एवं कर्मकाण्ड</span>
       <h2>विशेष पूजा, जाप, अनुष्ठान एवं हवन</h2>
       <p>धरान ज्योतिष केन्द्रमा सम्पूर्ण वैदिक पूजा, जाप, तथा अनुष्ठान विधिपूर्वक सम्पन्न गरिन्छ।</p>
     </div>
     <div class="puja-grid">
-      <div class="puja-card reveal"><h4><span class="icon">🕉️</span>गायत्री जाप</h4><p>बुद्धि वृद्धि र शान्तिको लागि गायत्री मन्त्र जाप विधान</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">🔱</span>महामृत्युञ्जय जाप</h4><p>स्वास्थ्य र दीर्घायुको लागि महामृत्युञ्जय जाप</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">🌺</span>विष्णु पूजा</h4><p>शान्ति र समृद्धिको लागि विष्णु आराधना</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">🔱</span>शिव पूजा</h4><p>ॐ नमः शिवाय जाप र रुद्राभिषेक विधि</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">⚡</span>दुर्गा पूजा</h4><p>नवरात्रि पूजा · रक्षा र शक्ति आराधना</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">🙉</span>हनुमान पूजा</h4><p>बल, बुद्धि र विघ्न नाशको लागि हनुमान आराधना</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">🌊</span>रुद्राभिषेक</h4><p>शिवलिङ्गमा जल, दूध, दही, घृत अर्पण विधि</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">🔥</span>हवन यज्ञ</h4><p>ग्रह शान्ति होम, नवग्रह होम, वास्तु होम</p></div>
-      <div class="puja-card reveal"><h4><span class="icon">💧</span>तर्पण · श्राद्ध</h4><p>पितृ श्राद्ध, पिण्ड दान, पितृ दोष निवारण</p></div>
+      <div class="puja-card aos-item aos-delay-1 hover-glow"><h4><span class="icon">🕉️</span>गायत्री जाप</h4><p>बुद्धि वृद्धि र शान्तिको लागि गायत्री मन्त्र जाप विधान</p></div>
+      <div class="puja-card aos-item aos-delay-2 hover-glow"><h4><span class="icon">🔱</span>महामृत्युञ्जय जाप</h4><p>स्वास्थ्य र दीर्घायुको लागि महामृत्युञ्जय जाप</p></div>
+      <div class="puja-card aos-item aos-delay-3 hover-glow"><h4><span class="icon">🌺</span>विष्णु पूजा</h4><p>शान्ति र समृद्धिको लागि विष्णु आराधना</p></div>
+      <div class="puja-card aos-item aos-delay-4 hover-glow"><h4><span class="icon">🔱</span>शिव पूजा</h4><p>ॐ नमः शिवाय जाप र रुद्राभिषेक विधि</p></div>
+      <div class="puja-card aos-item aos-delay-5 hover-glow"><h4><span class="icon">⚡</span>दुर्गा पूजा</h4><p>नवरात्रि पूजा · रक्षा र शक्ति आराधना</p></div>
+      <div class="puja-card aos-item aos-delay-1 hover-glow"><h4><span class="icon">🙉</span>हनुमान पूजा</h4><p>बल, बुद्धि र विघ्न नाशको लागि हनुमान आराधना</p></div>
+      <div class="puja-card aos-item aos-delay-2 hover-glow"><h4><span class="icon">🌊</span>रुद्राभिषेक</h4><p>शिवलिङ्गमा जल, दूध, दही, घृत अर्पण विधि</p></div>
+      <div class="puja-card aos-item aos-delay-3 hover-glow"><h4><span class="icon">🔥</span>हवन यज्ञ</h4><p>ग्रह शान्ति होम, नवग्रह होम, वास्तु होम</p></div>
+      <div class="puja-card aos-item aos-delay-4 hover-glow"><h4><span class="icon">💧</span>तर्पण · श्राद्ध</h4><p>पितृ श्राद्ध, पिण्ड दान, पितृ दोष निवारण</p></div>
     </div>
   </div>
 </section>
 
+<!-- ===== SANSKAR ===== -->
 <section id="sankars" style="background:var(--parchment-dim);">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head aos-item">
       <span class="kicker">षोडश संस्कार</span>
       <h2>जन्मदेखि मृत्युसम्मका १६ वैदिक संस्कार</h2>
       <p>हिन्दू धर्ममा जीवनका १६ संस्कारहरू — गर्भाधानदेखि अन्त्येष्टि सम्म विधिपूर्वक सम्पन्न।</p>
     </div>
     <div class="sankar-grid">
-      <div class="sankar-card reveal"><div class="num">१</div><h4>गर्भाधान</h4><p>सन्तान प्राप्तिको संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">२</div><h4>पुंसवन</h4><p>पुत्र प्राप्ति हेतु संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">३</div><h4>सीमन्तोन्नयन</h4><p>गर्भस्थ शिशुको रक्षा</p></div>
-      <div class="sankar-card reveal"><div class="num">४</div><h4>जातकर्म</h4><p>जन्मपछिको प्रथम संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">५</div><h4>नामकरण</h4><p>नाम राख्ने संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">६</div><h4>निष्क्रमण</h4><p>बाहिर निकाल्ने संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">७</div><h4>अन्नप्राशन</h4><p>अन्न खुवाउने संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">८</div><h4>चूड़ाकर्म</h4><p>कपाल मुण्डन संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">९</div><h4>कर्णवेध</h4><p>कान छेड्ने संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">१०</div><h4>उपनयन</h4><p>यज्ञोपवीत · ब्रतबन्ध</p></div>
-      <div class="sankar-card reveal"><div class="num">११</div><h4>वेदारम्भ</h4><p>वेद अध्ययन आरम्भ</p></div>
-      <div class="sankar-card reveal"><div class="num">१२</div><h4>समावर्तन</h4><p>ब्रह्मचर्य पूर्णता</p></div>
-      <div class="sankar-card reveal"><div class="num">१३</div><h4>विवाह</h4><p>वैवाहिक संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">१४</div><h4>वानप्रस्थ</h4><p>वन गमन संस्कार</p></div>
-      <div class="sankar-card reveal"><div class="num">१५</div><h4>संन्यास</h4><p>संन्यासाश्रम ग्रहण</p></div>
-      <div class="sankar-card reveal"><div class="num">१६</div><h4>अन्त्येष्टि</h4><p>अन्तिम संस्कार · पिण्ड दान</p></div>
+      <div class="sankar-card aos-item aos-delay-1"><div class="num">१</div><h4>गर्भाधान</h4><p>सन्तान प्राप्तिको संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-2"><div class="num">२</div><h4>पुंसवन</h4><p>पुत्र प्राप्ति हेतु संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-3"><div class="num">३</div><h4>सीमन्तोन्नयन</h4><p>गर्भस्थ शिशुको रक्षा</p></div>
+      <div class="sankar-card aos-item aos-delay-4"><div class="num">४</div><h4>जातकर्म</h4><p>जन्मपछिको प्रथम संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-5"><div class="num">५</div><h4>नामकरण</h4><p>नाम राख्ने संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-1"><div class="num">६</div><h4>निष्क्रमण</h4><p>बाहिर निकाल्ने संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-2"><div class="num">७</div><h4>अन्नप्राशन</h4><p>अन्न खुवाउने संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-3"><div class="num">८</div><h4>चूड़ाकर्म</h4><p>कपाल मुण्डन संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-4"><div class="num">९</div><h4>कर्णवेध</h4><p>कान छेड्ने संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-5"><div class="num">१०</div><h4>उपनयन</h4><p>यज्ञोपवीत · ब्रतबन्ध</p></div>
+      <div class="sankar-card aos-item aos-delay-1"><div class="num">११</div><h4>वेदारम्भ</h4><p>वेद अध्ययन आरम्भ</p></div>
+      <div class="sankar-card aos-item aos-delay-2"><div class="num">१२</div><h4>समावर्तन</h4><p>ब्रह्मचर्य पूर्णता</p></div>
+      <div class="sankar-card aos-item aos-delay-3"><div class="num">१३</div><h4>विवाह</h4><p>वैवाहिक संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-4"><div class="num">१४</div><h4>वानप्रस्थ</h4><p>वन गमन संस्कार</p></div>
+      <div class="sankar-card aos-item aos-delay-5"><div class="num">१५</div><h4>संन्यास</h4><p>संन्यासाश्रम ग्रहण</p></div>
+      <div class="sankar-card aos-item aos-delay-1"><div class="num">१६</div><h4>अन्त्येष्टि</h4><p>अन्तिम संस्कार · पिण्ड दान</p></div>
     </div>
   </div>
 </section>
 
+<!-- ===== ABOUT ===== -->
 <section class="about" id="about">
   <div class="wrap about-grid">
-    <div class="pandit-card reveal">
+    <div class="pandit-card aos-item">
       <div class="om">ॐ</div>
       <h3>पण्डित शालिग्राम गुरु</h3>
       <div class="role">संस्थापक ज्योतिषाचार्य · धरान, सुनसरी</div>
       <p>तपस्या, श्रद्धा र सत्य ज्योतिषको साधनामा बिताएका ५० वर्षभन्दा बढी समयमा, धरान र पूर्वाञ्चलका हजारौं परिवारलाई ग्रह-नक्षत्रको मार्गदर्शन दिइसक्नुभएको छ।</p>
-      <a class="btn btn-primary" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20पण्डित%20शालिग्राम%20गुरुसँग%20परामर्श%20चाहियो।" target="_blank" rel="noopener">💬 गुरुसँग सम्पर्क गर्नुहोस्</a>
+      <a class="btn btn-primary ripple-btn" href="https://wa.me/9765478998?text=नमस्ते%2C%20मलाई%20पण्डित%20शालिग्राम%20गुरुसँग%20परामर्श%20चाहियो。" target="_blank" rel="noopener">💬 गुरुसँग सम्पर्क गर्नुहोस्</a>
     </div>
-    <div class="about-copy reveal">
+    <div class="about-copy aos-item">
       <h2>परम्परागत ज्ञान, वर्तमान समयको भरोसा</h2>
       <p>धरान ज्योतिष केन्द्र जनपथ रोड, धरान-५६७००, सुनसरीमा अवस्थित छ। यहाँ वैदिक ज्योतिष शास्त्रका सिद्धान्तहरूलाई श्रद्धापूर्वक पालना गर्दै, हरेक ग्राहकको समस्यालाई व्यक्तिगत ध्यान दिइन्छ।</p>
       <p>कुण्डली हेराइदेखि पूजा-सल्लाहसम्म, हरेक परामर्श व्यक्तिको जन्म विवरणमा आधारित भई तयार गरिन्छ।</p>
       <div class="stat-strip">
-        <div><strong>५०+</strong><span>वर्ष अनुभव</span></div>
+        <div><strong class="count-number" data-count="50">0</strong><span>+ वर्ष अनुभव</span></div>
         <div><strong>५.०</strong><span>गुगल रेटिङ</span></div>
         <div><strong>१</strong><span>धरान शाखा, जनपथ</span></div>
       </div>
@@ -706,23 +864,29 @@ input, textarea, [contenteditable="true"] {
   </div>
 </section>
 
+<!-- ===== PROCESS ===== -->
 <section id="process">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head aos-item">
       <span class="kicker">कसरी सुरु गर्ने</span>
       <h2>परामर्श लिने प्रक्रिया</h2>
     </div>
     <div class="process-grid">
-      <div class="process-step reveal"><div class="step-num">१</div><h3>सम्पर्क गर्नुहोस्</h3><p>कल वा WhatsApp मार्फत आफ्नो समस्या साझा गर्नुहोस्।</p></div>
-      <div class="process-step reveal"><div class="step-num">२</div><h3>जन्म विवरण दिनुहोस्</h3><p>जन्म मिति, समय र स्थान उपलब्ध गराउनुहोस्।</p></div>
-      <div class="process-step reveal"><div class="step-num">३</div><h3>कुण्डली तयार हुन्छ</h3><p>ग्रह स्थिति र दशा हेरी विस्तृत विश्लेषण गरिन्छ।</p></div>
-      <div class="process-step reveal"><div class="step-num">४</div><h3>परामर्श तथा उपाय</h3><p>व्यक्तिगत भेट वा फोनमार्फत विस्तृत सल्लाह दिइन्छ।</p></div>
+      <div class="process-step aos-item"><div class="step-num">१</div><h3>सम्पर्क गर्नुहोस्</h3><p>कल वा WhatsApp मार्फत आफ्नो समस्या साझा गर्नुहोस्।</p></div>
+      <div class="process-step aos-item aos-delay-2"><div class="step-num">२</div><h3>जन्म विवरण दिनुहोस्</h3><p>जन्म मिति, समय र स्थान उपलब्ध गराउनुहोस्।</p></div>
+      <div class="process-step aos-item aos-delay-3"><div class="step-num">३</div><h3>कुण्डली तयार हुन्छ</h3><p>ग्रह स्थिति र दशा हेरी विस्तृत विश्लेषण गरिन्छ।</p></div>
+      <div class="process-step aos-item aos-delay-4"><div class="step-num">४</div><h3>परामर्श तथा उपाय</h3><p>व्यक्तिगत भेट वा फोनमार्फत विस्तृत सल्लाह दिइन्छ।</p></div>
     </div>
   </div>
 </section>
 
+<!-- ===== DISPLAY AD ===== -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2126676668960770" data-ad-slot="YOUR_REAL_AD_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== TRUST BAND ===== -->
 <section class="trust-band">
-  <div class="wrap reveal">
+  <div class="wrap aos-item">
     <div class="stars-big">★★★★★</div>
     <h2>५.० रेटिङ · ९ गुगल समीक्षाहरू</h2>
     <p>धरानका ग्राहकहरूले वर्षौंदेखि विश्वास गरेको ज्योतिष केन्द्र। हाम्रा गतिविधि सामाजिक सञ्जालमा पनि पछ्याउनुहोस्।</p>
@@ -734,14 +898,19 @@ input, textarea, [contenteditable="true"] {
   </div>
 </section>
 
+<!-- ===== DISPLAY AD ===== -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2126676668960770" data-ad-slot="YOUR_REAL_AD_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== CONTACT ===== -->
 <section id="contact">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head aos-item">
       <span class="kicker">सम्पर्क</span>
       <h2>आजै परामर्श लिनुहोस्</h2>
     </div>
     <div class="contact-grid">
-      <div class="contact-card reveal">
+      <div class="contact-card aos-item">
         <h3>विवरण</h3>
         <div class="contact-row"><span class="ic">📍</span><span>R79G+CQW, जनपथ रोड, धरान-५६७००, सुनसरी</span></div>
         <div class="contact-row"><span class="ic">📞</span><span><a href="tel:+9765478998">+977 976-5478998</a></span></div>
@@ -749,176 +918,270 @@ input, textarea, [contenteditable="true"] {
         <div class="contact-row"><span class="ic">🌐</span><span><a href="https://dharanjyotishkendra.github.io/dharan-jyotish-kendra/" target="_blank" rel="noopener">https://dharanjyotishkendra.github.io/dharan-jyotish-kendra/</a></span></div>
         <div class="contact-row"><span class="ic">🗺️</span><span><a href="https://www.google.com/maps/search/?api=1&query=Dharan+Jyotish+Kendra+Jana+Path+Dharan" target="_blank" rel="noopener">गुगल म्यापमा हेर्नुहोस्</a></span></div>
       </div>
-      <div class="contact-card dark reveal">
+      <div class="contact-card dark aos-item aos-delay-2">
         <h3>तुरुन्तै सल्लाह चाहियो?</h3>
         <p>WhatsApp मार्फत आफ्नो समस्या लेखेर पठाउनुहोस्, वा सिधै कल गर्नुहोस् — हामी चाँडै जवाफ दिनेछौं।</p>
         <div class="btns">
-          <a class="btn btn-primary" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
-          <a class="btn btn-solid-gold" href="tel:9765478998">📞 कल गर्नुहोस्</a>
+          <a class="btn btn-primary ripple-btn" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु。" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="btn btn-solid-gold ripple-btn" href="tel:9765478998">📞 कल गर्नुहोस्</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ===== DISPLAY AD ===== -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2126676668960770" data-ad-slot="YOUR_REAL_AD_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== FOOTER ===== -->
 <footer>
-  <!-- ===== LIVE VISITOR COUNTER ===== -->
-<div style="text-align:center; padding:10px 0; background:var(--night-deep); color:var(--marigold-soft); font-size:14px; border-top:1px solid rgba(242,169,59,0.2);">
+  <div style="text-align:center; padding:10px 0; background:var(--night-deep); color:var(--marigold-soft); font-size:14px; border-top:1px solid rgba(242,169,59,0.2);">
     <span>👁️ Live Visitors: </span>
     <span id="visitorCount" style="font-weight:700; font-size:18px; color:#FF9933;">0</span>
     <span style="font-size:12px; color:rgba(247,241,228,0.5); margin-left:10px;">(Real-time)</span>
-</div>
+  </div>
   <p>© <span id="yr"></span> <strong>धरान ज्योतिष केन्द्र</strong> — पण्डित शालिग्राम गुरु द्वारा संचालित</p>
   <p style="margin-top:6px;">जनपथ रोड, धरान-५६७००, सुनसरी, नेपाल</p>
+  
+  <!-- ===== PRIVACY POLICY LINK ===== -->
+  <p style="margin-top:8px; font-size:12px;">
+    <a href="javascript:void(0)" onclick="openPrivacy()" style="color:rgba(247,241,228,0.6); text-decoration:underline;">🔒 गोपनीयता नीति</a>
+  </p>
 </footer>
 
-<a class="float-wa" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
+<!-- ===== FLOATING WHATSAPP ===== -->
+<a class="float-wa" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु。" target="_blank" rel="noopener">💬 WhatsApp</a>
 
+<!-- ===== MOBILE CTA ===== -->
 <div class="mobile-cta-bar">
   <a class="call" href="tel:9765478998">📞 कल गर्नुहोस्</a>
-  <a class="wa" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु।" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a class="wa" href="https://wa.me/9765478998?text=नमस्ते%20धरान%20ज्योतिष%20केन्द्र%2C%20म%20परामर्श%20चाहन्छु。" target="_blank" rel="noopener">💬 WhatsApp</a>
 </div>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
+(function() {
+    'use strict';
 
-  (function(){
-    const field = document.getElementById('starsField');
-    for(let i=0;i<50;i++){
-      const s = document.createElement('div');
-      s.className='star';
-      const size = Math.random()*2.4+0.9;
-      s.style.width=size+'px';
-      s.style.height=size+'px';
-      s.style.left=Math.random()*100+'%';
-      s.style.top=Math.random()*100+'%';
-      s.style.animationDelay=(Math.random()*4.5)+'s';
-      field.appendChild(s);
+    // ===== PRIVACY POPUP =====
+    window.openPrivacy = function(){
+        document.getElementById('privacyPopup').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    };
+    window.closePrivacy = function(){
+        document.getElementById('privacyPopup').classList.remove('show');
+        document.body.style.overflow = '';
+    };
+    document.getElementById('privacyDate').textContent = new Date().toLocaleDateString('ne-NP', {
+        year: 'numeric', month: 'long', day: 'numeric'
+    });
+    document.getElementById('privacyPopup').addEventListener('click', function(e){
+        if(e.target === this) closePrivacy();
+    });
+
+    // ===== YEAR =====
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // ===== STARS =====
+    (function(){
+        var field = document.getElementById('starsField');
+        if(field){
+            for(var i=0;i<60;i++){
+                var s = document.createElement('div');
+                s.className = 'star';
+                var size = Math.random() * 2.6 + 0.8;
+                s.style.width = size + 'px';
+                s.style.height = size + 'px';
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top = Math.random() * 100 + '%';
+                s.style.animationDelay = (Math.random() * 5) + 's';
+                s.style.animationDuration = (3 + Math.random() * 4) + 's';
+                field.appendChild(s);
+            }
+        }
+    })();
+
+    // ===== AOS =====
+    (function(){
+        var items = document.querySelectorAll('.aos-item');
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    entry.target.classList.add('aos-visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+        items.forEach(function(el){ observer.observe(el); });
+    })();
+
+    // ===== COUNT-UP =====
+    (function(){
+        var counters = document.querySelectorAll('.count-number');
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    var el = entry.target;
+                    var target = parseInt(el.getAttribute('data-count')) || 0;
+                    var current = 0;
+                    var increment = Math.ceil(target / 50);
+                    var timer = setInterval(function(){
+                        current += increment;
+                        if(current >= target){
+                            el.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            el.textContent = current;
+                        }
+                    }, 30);
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(function(el){ observer.observe(el); });
+    })();
+
+    // ===== RIPPLE =====
+    document.querySelectorAll('.ripple-btn').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+            var rect = this.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            var size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (x - size/2) + 'px';
+            ripple.style.top = (y - size/2) + 'px';
+            this.appendChild(ripple);
+            setTimeout(function(){ ripple.remove(); }, 600);
+        });
+    });
+
+    // ===== CONFETTI =====
+    function launchConfetti(count){
+        count = count || 60;
+        var container = document.getElementById('confettiContainer');
+        if(!container) return;
+        var colors = ['#F2A93B', '#C1440E', '#FF9933', '#FBD98A', '#E5896A', '#2FBF71', '#128C7E', '#DC143C', '#DAA520'];
+        for(var i=0;i<count;i++){
+            var confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            var size = 6 + Math.random() * 8;
+            var isCircle = Math.random() > 0.5;
+            confetti.style.width = isCircle ? size + 'px' : size * 0.6 + 'px';
+            confetti.style.height = isCircle ? size + 'px' : size * 1.8 + 'px';
+            confetti.style.borderRadius = isCircle ? '50%' : '2px';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = '-10px';
+            confetti.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+            var duration = 2 + Math.random() * 3;
+            confetti.style.animationDuration = duration + 's';
+            confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+            container.appendChild(confetti);
+            setTimeout(function(){ confetti.remove(); }, (duration + 0.5) * 1000);
+        }
     }
-  })();
+    setTimeout(function(){ launchConfetti(50); }, 1200);
+    var confettiFired = false;
+    window.addEventListener('scroll', function(){
+        if(!confettiFired && window.scrollY > 600){
+            launchConfetti(40);
+            confettiFired = true;
+        }
+    });
 
-  (function(){
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    },{threshold:0.12});
-    els.forEach(el=>io.observe(el));
-  })();
+    // ===== SCROLL PROGRESS & BACK TO TOP =====
+    window.addEventListener('scroll', function(){
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        var progress = document.getElementById('scrollProgress');
+        if(progress) progress.style.width = scrolled + '%';
+        
+        var toTop = document.getElementById('toTop');
+        if(toTop){
+            if(winScroll > 400){
+                toTop.classList.add('show');
+            } else {
+                toTop.classList.remove('show');
+            }
+        }
+    });
+    document.getElementById('toTop').addEventListener('click', function(){
+        window.scrollTo({top:0, behavior:'smooth'});
+    });
 
-  // ===== REAL-TIME LIVE VISITOR COUNTER (Production Ready) =====
-  (function() {
-      'use strict';
-      
-      let visitorCount = 0;
-      const counterEl = document.getElementById('visitorCount');
-      
-      // Start with random base count (20-80)
-      visitorCount = Math.floor(Math.random() * 60) + 20;
-      counterEl.textContent = visitorCount;
-      
-      // Update every 2-6 seconds (simulating real visitors)
-      function updateCounter() {
-          // Random change: 0, 1, or 2 new visitors
-          const change = Math.floor(Math.random() * 3);
-          if (change > 0) {
-              visitorCount += change;
-              counterEl.textContent = visitorCount;
-              
-              // Pulse animation
-              counterEl.style.transition = 'transform 0.15s';
-              counterEl.style.transform = 'scale(1.4)';
-              setTimeout(() => {
-                  counterEl.style.transform = 'scale(1)';
-              }, 150);
-          }
-          
-          // Schedule next update
-          const nextDelay = Math.floor(Math.random() * 4000) + 2000; // 2-6 seconds
-          setTimeout(updateCounter, nextDelay);
-      }
-      
-      // Start the counter
-      setTimeout(updateCounter, 1000);
-      
-  })();
+    // ===== LOADER =====
+    window.addEventListener('load', function(){
+        setTimeout(function(){
+            var loader = document.getElementById('loader');
+            if(loader) loader.classList.add('hide');
+        }, 1200);
+    });
 
-  // ===== SECURITY: Right Click & Keyboard Disable (Production) =====
-  (function() {
-      'use strict';
-      
-      // Right Click Disable
-      document.addEventListener('contextmenu', function(e) {
-          e.preventDefault();
-          alert('🔒 कृपया कोड कपी नगर्नुहोस्!');
-          return false;
-      });
-      
-      // Keyboard Shortcuts Disable
-      document.addEventListener('keydown', function(e) {
-          const key = e.key;
-          const ctrl = e.ctrlKey;
-          const shift = e.shiftKey;
-          
-          // List of forbidden keys
-          const forbidden = [
-              key === 'F12',
-              key === 'F11',
-              key === 'PrintScreen',
-              (ctrl && key === 'u'),
-              (ctrl && key === 'U'),
-              (ctrl && shift && (key === 'I' || key === 'i')),
-              (ctrl && shift && (key === 'J' || key === 'j')),
-              (ctrl && key === 's'),
-              (ctrl && key === 'S'),
-              (ctrl && key === 'c'),
-              (ctrl && key === 'C'),
-              (ctrl && key === 'v'),
-              (ctrl && key === 'V'),
-              (ctrl && key === 'a'),
-              (ctrl && key === 'A'),
-              (ctrl && key === 'p'),
-              (ctrl && key === 'P'),
-              (ctrl && key === 'o'),
-              (ctrl && key === 'O')
-          ];
-          
-          if (forbidden.some(f => f === true)) {
-              e.preventDefault();
-              e.stopPropagation();
-              alert('🔒 यो सुविधा असक्षम गरिएको छ!');
-              return false;
-          }
-      });
-      
-      // Disable drag and drop
-      document.addEventListener('dragstart', function(e) {
-          e.preventDefault();
-          return false;
-      });
-      
-      // Disable copy, cut, paste
-      document.addEventListener('copy', function(e) {
-          e.preventDefault();
-          return false;
-      });
-      
-      document.addEventListener('cut', function(e) {
-          e.preventDefault();
-          return false;
-      });
-      
-      document.addEventListener('paste', function(e) {
-          e.preventDefault();
-          return false;
-      });
-      
-      console.log('🔒 धरान ज्योतिष केन्द्र - सबै अधिकार सुरक्षित');
-      
-  })();
+    // ===== VISITOR COUNTER =====
+    (function(){
+        var count = localStorage.getItem('dj_visitorCount');
+        if (!count) {
+            count = Math.floor(Math.random() * 45) + 15;
+            localStorage.setItem('dj_visitorCount', count);
+        }
+        var counterEl = document.getElementById('visitorCount');
+        if (counterEl) {
+            counterEl.textContent = count;
+        }
+        setInterval(function() {
+            var change = Math.random() > 0.65 ? 1 : (Math.random() > 0.5 ? 1 : 0);
+            var newCount = parseInt(localStorage.getItem('dj_visitorCount')) + change;
+            if (newCount < 10) newCount = 10;
+            localStorage.setItem('dj_visitorCount', newCount);
+            if (counterEl) {
+                counterEl.textContent = newCount;
+                counterEl.style.transition = 'transform 0.15s ease';
+                counterEl.style.transform = 'scale(1.4)';
+                setTimeout(function() {
+                    counterEl.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }, 4000 + Math.random() * 4000);
+    })();
+
+    // ===== SECURITY =====
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert('🔒 कृपया कोड कपी नगर्नुहोस्!');
+    });
+    document.addEventListener('keydown', function(e) {
+        var key = e.key;
+        var ctrl = e.ctrlKey;
+        var shift = e.shiftKey;
+        if (key === 'F12' || 
+            (ctrl && key === 'u') || 
+            (ctrl && shift && (key === 'I' || key === 'J')) ||
+            (ctrl && key === 's') ||
+            (ctrl && key === 'c') ||
+            (ctrl && key === 'v') ||
+            (ctrl && key === 'a')) {
+            e.preventDefault();
+            alert('🔒 यो सुविधा असक्षम गरिएको छ!');
+            return false;
+        }
+    });
+    document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
+    document.addEventListener('cut', function(e) { e.preventDefault(); return false; });
+    document.addEventListener('paste', function(e) { e.preventDefault(); return false; });
+    console.log('🔒 धरान ज्योतिष केन्द्र - सबै अधिकार सुरक्षित');
+
+})();
 </script>
 
+<!-- ===== DISPLAY AD ===== -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2126676668960770" data-ad-slot="YOUR_REAL_AD_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== SECOND FOOTER ===== -->
 <footer class="footer">
     <span class="footer-brand">
         <strong style="color:#000;">Website Developed by :</strong>
@@ -927,9 +1190,7 @@ input, textarea, [contenteditable="true"] {
         <span class="pvt"> PVT. LTD.</span>
     </span>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📞
-    <a href="tel:9842147661" class="footer-phone">
-        9842147661
-    </a>
+    <a href="tel:9842147661" class="footer-phone">9842147661</a>
 </footer>
 
 </body>
